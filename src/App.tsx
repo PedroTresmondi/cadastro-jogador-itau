@@ -12,6 +12,9 @@ function App() {
   const [senhaInput, setSenhaInput] = useState('');
   const senhaCorreta = 'phygital2025';
 
+  const [modalAberto, setModalAberto] = useState(false);
+
+
   const [form, setForm] = useState({
     nome: '',
     email: '',
@@ -188,9 +191,22 @@ function App() {
 
               <label className="checkbox-inline">
                 <input type="checkbox" name="politica" checked={form.politica} onChange={handleChange} />
-                Ao me registrar, concordo com a <a href="#">política de privacidade</a>
+                Ao me registrar, concordo com a <a href="#" onClick={() => setModalAberto(true)}>política de privacidade</a>
               </label>
             </div>
+            {modalAberto && (
+              <div className="modal-termos">
+                <div className="modal-termos-content">
+                  <p>
+                    Os dados pessoais coletados pelo Itaú Unibanco serão utilizados para a finalidade de envio de ofertas nos termos da Lei nº 13.709/2018 – LGPD.
+                    Para mais informações quanto ao tratamento dos seus dados pessoais, acesse a nossa&nbsp;
+                    <a href="https://www.itau.com.br/privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.
+                  </p>
+                  <button className="btn-fechar" onClick={() => setModalAberto(false)}>Fechar</button>
+                </div>
+              </div>
+            )}
+
 
             {/* <TecladoVirtual onKeyPress={handleKeyPress} onBackspace={handleBackspace} /> */}
 
@@ -200,6 +216,8 @@ function App() {
       )}
     </div>
   );
+
 }
+
 
 export default App;

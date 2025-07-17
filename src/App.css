@@ -249,3 +249,45 @@ body {
           font-size: 20px;
         }
 }
+
+.modal-termos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.modal-termos-content {
+  background: white;
+  padding: 40px;
+  max-width: 600px;
+  border-radius: 12px;
+  color: black;
+  text-align: justify;
+  font-size: 16px;
+  line-height: 1.6;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-termos-content a {
+  color: #ff6200;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.btn-fechar {
+  background: #ff6200;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+}
