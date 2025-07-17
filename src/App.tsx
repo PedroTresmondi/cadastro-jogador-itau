@@ -112,14 +112,27 @@ function App() {
     const cpfFormatado = formatarCPF(cpf);
     const cpfFinal = estrangeiro ? 'estrangeiro' : cpfFormatado;
 
-    const { data, error } = await supabase
+    // Verifica duplicidade de CPF se NÃO for estrangeiro
+    if (!estrangeiro) {
+      const { data: cpfData, error: cpfError } = await supabase
+        .from('cadastro_jogadores')
+        .select('cpf')
+        .eq('cpf', cpfFinal);
+
+      if (cpfError) return mostrarToast('Erro ao verificar CPF.');
+      if (cpfData.length > 0) return mostrarToast('Este CPF já participou.');
+    }
+
+    // Verifica duplicidade de telefone (sempre)
+    const { data: telData, error: telError } = await supabase
       .from('cadastro_jogadores')
-      .select('cpf')
-      .eq('cpf', cpfFinal);
+      .select('telefone')
+      .eq('telefone', telefone);
 
-    if (error) return mostrarToast('Erro ao verificar CPF.');
-    if (data.length > 0) return mostrarToast('Este CPF já participou.');
+    if (telError) return mostrarToast('Erro ao verificar telefone.');
+    if (telData.length > 0) return mostrarToast('Este telefone já participou.');
 
+    // Insere cadastro
     const { error: insertError } = await supabase
       .from('cadastro_jogadores')
       .insert([{ nome, email, telefone, cpf: cpfFinal }]);
@@ -128,6 +141,7 @@ function App() {
     mostrarToast('Cadastro realizado com sucesso!');
     localStorage.setItem('nomeJogador', estrangeiro ? nome : cpfFormatado);
   };
+
 
 
   const autenticar = () => {
