@@ -1,5 +1,9 @@
 import { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import 'react-phone-input-2/lib/style.css';
+import PhoneInput from 'react-phone-input-2';
+
+
 import './App.css';
 
 const supabase = createClient(
@@ -187,9 +191,23 @@ function App() {
 
             <div className="input-group">
               <label htmlFor="telefone">Telefone</label>
-              <input id="telefone" type="tel" name="telefone" value={form.telefone} onChange={handleChange} />
+              {form.estrangeiro ? (
+                <PhoneInput
+                  country={'us'}
+                  value={form.telefone}
+                  onChange={(tel) => setForm((prev) => ({ ...prev, telefone: tel }))}
+                  inputStyle={{ width: '100%' }}
+                />
+              ) : (
+                <input
+                  id="telefone"
+                  type="tel"
+                  name="telefone"
+                  value={form.telefone}
+                  onChange={handleChange}
+                />
+              )}
             </div>
-
             {!form.estrangeiro && (
               <div className="input-group">
                 <label htmlFor="cpf">CPF</label>

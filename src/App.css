@@ -291,3 +291,21 @@ body {
   margin-top: 20px;
   cursor: pointer;
 }
+.react-tel-input .flag-dropdown .country-list {
+  outline: none !important;
+  z-index: 1 !important;
+  list-style: none !important;
+  position: absolute !important;
+  color: black !important;
+  padding: 0 !important;
+  margin: 10px 0 10px -1px !important;
+  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.35) !important;
+  background-color: white !important;
+  width: fit-content !important;
+  max-height: 200px !important;
+  display: flex !important;
+  overflow-y: scroll !important;
+  border-radius: 0 0 3px 3px !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
