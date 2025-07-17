@@ -2,11 +2,11 @@ body {
   margin: 0;
   padding: 0;
   background: url('./assets/bg_cadastro.png') no-repeat center center fixed;
-  background-size: cover;
+  background-size: contain;
   font-family: sans-serif;
   color: white;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,8 +38,6 @@ body {
 .container {
   width: 100vw;
   height: 100vh;
-  overflow-y: auto;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,9 +62,9 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 75%;
-    aspect-ratio: 9 / 16;
+  aspect-ratio: 9 / 16;
   padding: 15vh 5vw;
-    border-radius: 16px;
+  border-radius: 16px;
     box-sizing: border-box;
   overflow: hidden;
 }
@@ -81,7 +79,7 @@ body {
 .modal-cpf-container input {
   width: 90%;
   padding: 1vh;
-    font-size: clamp(18px, 4vw, 24px);
+  font-size: clamp(18px, 4vw, 24px);
   text-align: center;
   border-radius: 8px;
   border: none;
@@ -105,7 +103,7 @@ body {
 .teclado button {
   width: clamp(45px, 8vw, 60px);
   padding: 1vh;
-    font-size: clamp(16px, 4vw, 22px);
+  font-size: clamp(16px, 4vw, 22px);
   background: #e1e1e1;
   border: none;
   border-radius: 6px;
@@ -199,4 +197,35 @@ body {
   border: none;
   background: white;
   color: black;
+}
+.modal-auth {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-auth-container {
+  background: #1f1f1f;
+  padding: 4vh 5vw;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #000;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-auth-container input {
+  width: 100%;
+  padding: 1vh;
+  margin: 2vh 0;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
 }

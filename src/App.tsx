@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import './App.css';
-import TecladoVirtual from './TecladoVirtual';
 
 const supabase = createClient(
   import.meta.env.VITE_SUPABASE_URL,
@@ -9,6 +8,10 @@ const supabase = createClient(
 );
 
 function App() {
+  const [autenticado, setAutenticado] = useState<boolean>(sessionStorage.getItem('autenticado') === 'true');
+  const [senhaInput, setSenhaInput] = useState('');
+  const senhaCorreta = 'phygital2025';
+
   const [form, setForm] = useState({
     nome: '',
     email: '',
@@ -123,86 +126,77 @@ function App() {
     localStorage.setItem('nomeJogador', estrangeiro ? nome : cpfFormatado);
   };
 
+  const autenticar = () => {
+    if (senhaInput === senhaCorreta) {
+      sessionStorage.setItem('autenticado', 'true');
+      setAutenticado(true);
+    } else {
+      mostrarToast('Senha incorreta');
+    }
+  };
+
   return (
     <div className="container">
       {mensagem && <div className="toast show">{mensagem}</div>}
 
-      <div className="modal">
-        <div className="modal-cpf-container">
-
-          <div className="input-group">
-            <label htmlFor="nome">Nome</label>
+      {!autenticado && (
+        <div className="modal-auth">
+          <div className="modal-auth-container">
+            <h3>Digite a senha para continuar</h3>
             <input
-              id="nome"
-              type="text"
-              name="nome"
-              value={form.nome}
-              onChange={handleChange}
+              type="password"
+              placeholder="Senha"
+              value={senhaInput}
+              onChange={(e) => setSenhaInput(e.target.value)}
             />
+            <button className="btn-continuar" onClick={autenticar}>Entrar</button>
           </div>
-
-          <div className="input-group">
-            <label htmlFor="email">E-mail</label>
-            <input
-              id="email"
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="input-group">
-            <label htmlFor="telefone">Telefone</label>
-            <input
-              id="telefone"
-              type="tel"
-              name="telefone"
-              value={form.telefone}
-              onChange={handleChange}
-            />
-          </div>
-
-          {!form.estrangeiro && (
-            <div className="input-group">
-              <label htmlFor="cpf">CPF</label>
-              <input
-                id="cpf"
-                type="text"
-                name="cpf"
-                value={formatarCPF(form.cpf)}
-                onChange={handleChange}
-                maxLength={14}
-              />
-            </div>
-          )}
-
-          <div className="checkboxes">
-            <label className="checkbox-inline">
-              <input
-                type="checkbox"
-                name="estrangeiro"
-                checked={form.estrangeiro}
-                onChange={handleChange}
-              />
-              Sou estrangeiro
-            </label>
-
-            <label className="checkbox-inline">
-              <input
-                type="checkbox"
-                name="politica"
-                checked={form.politica}
-                onChange={handleChange}
-              />
-              Ao me registrar, concordo com a<a href="#">política de privacidade</a>
-            </label>
-          </div>
-          {/* <TecladoVirtual onKeyPress={handleKeyPress} onBackspace={handleBackspace} /> */}
-
-          <button className="btn-continuar" onClick={handleSubmit}>Continuar</button>
         </div>
-      </div>
+      )}
+
+      {autenticado && (
+        <div className="modal">
+          <div className="modal-cpf-container">
+            <div className="input-group">
+              <label htmlFor="nome">Nome</label>
+              <input id="nome" type="text" name="nome" value={form.nome} onChange={handleChange} />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="email">E-mail</label>
+              <input id="email" type="email" name="email" value={form.email} onChange={handleChange} />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="telefone">Telefone</label>
+              <input id="telefone" type="tel" name="telefone" value={form.telefone} onChange={handleChange} />
+            </div>
+
+            {!form.estrangeiro && (
+              <div className="input-group">
+                <label htmlFor="cpf">CPF</label>
+                <input id="cpf" type="text" name="cpf" value={formatarCPF(form.cpf)} onChange={handleChange} maxLength={14} />
+              </div>
+            )}
+
+            <div className="checkboxes">
+              <label className="checkbox-inline">
+                <input type="checkbox" name="estrangeiro" checked={form.estrangeiro} onChange={handleChange} />
+                Sou estrangeiro
+              </label>
+
+              <label className="checkbox-inline">
+                <input type="checkbox" name="politica" checked={form.politica} onChange={handleChange} />
+                Ao me registrar, concordo com a <a href="#">política de privacidade</a>
+              </label>
+            </div>
+
+            {/* <TecladoVirtual onKeyPress={handleKeyPress} onBackspace={handleBackspace} /> */}
+
+            <button className="btn-continuar" onClick={handleSubmit}>Continuar</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
