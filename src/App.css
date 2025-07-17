@@ -2,15 +2,23 @@
 body {
   margin: 0;
   padding: 0;
-  background: url('./assets/bg_cadastro.png') no-repeat center center fixed;
-  background-size: contain;
   font-family: sans-serif;
   color: white;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* overflow: hidden;  Removido para permitir rolagem se necessário */
+  overflow: hidden;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('./assets/bg_cadastro.png') no-repeat center center;
+    background-size: contain;
+    z-index: -1;
 }
 
 /* === TOAST === */
@@ -45,6 +53,8 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  padding: 5vh 0;
+    box-sizing: border-box;
 }
 
 /* === MODAL === */
@@ -101,11 +111,12 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-    max-width: 400px;
+  max-width: 400px;
   aspect-ratio: 9 / 16;
   padding: 12vh 5vw;
   border-radius: 16px;
   box-sizing: border-box;
+  max-height: 90vh;
 }
 
 .modal-cpf-container h3 {
@@ -120,7 +131,7 @@ body {
   width: 95%;
   margin-bottom: 2vh;
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .input-group label {
@@ -133,7 +144,7 @@ body {
 .input-group input {
   padding: 1vh;
   font-size: clamp(18px, 4vw, 24px);
-    text-align: center;
+  text-align: center;
     border-radius: 8px;
   border: none;
   background: white;
@@ -203,7 +214,7 @@ body {
 .teclado {
   display: flex;
   flex-wrap: wrap;
-    gap: 1vw;
+  gap: 1vw;
     background-color: #d3d4d9;
     padding: 2vh;
     width: 100%;
@@ -216,10 +227,10 @@ body {
   width: clamp(45px, 8vw, 60px);
   padding: 1vh;
   font-size: clamp(16px, 4vw, 22px);
-    background: #e1e1e1;
+  background: #e1e1e1;
   border: none;
   border-radius: 6px;
-    font-weight: bold;
+  font-weight: bold;
     cursor: pointer;
   color: black;
   margin: 2px;

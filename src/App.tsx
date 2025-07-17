@@ -93,6 +93,7 @@ function App() {
 
   const handleSubmit = async () => {
     const { nome, email, telefone, cpf, politica, estrangeiro } = form;
+
     if (!nome || !email || !telefone || (!estrangeiro && cpf.replace(/\D/g, '').length !== 11)) {
       return mostrarToast('Preencha todos os campos corretamente.');
     }
@@ -106,25 +107,25 @@ function App() {
     }
 
     const cpfFormatado = formatarCPF(cpf);
+    const cpfFinal = estrangeiro ? 'estrangeiro' : cpfFormatado;
 
-    if (!estrangeiro) {
-      const { data, error } = await supabase
-        .from('cadastro_jogadores')
-        .select('cpf')
-        .eq('cpf', cpfFormatado);
+    const { data, error } = await supabase
+      .from('cadastro_jogadores')
+      .select('cpf')
+      .eq('cpf', cpfFinal);
 
-      if (error) return mostrarToast('Erro ao verificar CPF.');
-      if (data.length > 0) return mostrarToast('Este CPF já participou.');
-    }
+    if (error) return mostrarToast('Erro ao verificar CPF.');
+    if (data.length > 0) return mostrarToast('Este CPF já participou.');
 
     const { error: insertError } = await supabase
       .from('cadastro_jogadores')
-      .insert([{ nome, email, telefone, cpf: estrangeiro ? null : cpfFormatado }]);
+      .insert([{ nome, email, telefone, cpf: cpfFinal }]);
 
     if (insertError) return mostrarToast('Erro ao cadastrar.');
     mostrarToast('Cadastro realizado com sucesso!');
     localStorage.setItem('nomeJogador', estrangeiro ? nome : cpfFormatado);
   };
+
 
   const autenticar = () => {
     if (senhaInput === senhaCorreta) {
