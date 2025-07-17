@@ -6,38 +6,53 @@ body {
   color: white;
   height: 100vh;
   overflow: hidden;
-    position: relative;
-  }
-  
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url('./assets/bg_cadastro.png') no-repeat center center;
-    background-size: contain;
-    z-index: -1;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('./assets/bg_cadastro.png') no-repeat center center;
+  background-size: contain;
+  z-index: -1;
 }
 
 /* === TOAST === */
 .toast {
-  visibility: hidden;
+  visibility: visible;
   min-width: 250px;
+  max-width: 80%;
   background-color: #333;
   color: #fff;
   text-align: center;
   border-radius: 8px;
   padding: 16px;
   position: fixed;
-  z-index: 10;
+  z-index: 9999;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 30px;
-  font-size: 14px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  opacity: 0.95;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  animation: slideDown 0.4s ease-out;
+}
+
+/* Animação opcional */
+@keyframes slideDown {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+
+  to {
+    top: 20px;
+    opacity: 0.95;
+  }
 }
 
 .toast.show {
@@ -54,7 +69,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 5vh 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* === MODAL === */
@@ -111,7 +126,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-    max-width: 60%;
+  max-width: 60%;
   aspect-ratio: 9 / 16;
   padding: 12vh 5vw;
   border-radius: 16px;
@@ -145,7 +160,7 @@ body {
   padding: 1vh;
   font-size: clamp(18px, 4vw, 24px);
   text-align: center;
-    border-radius: 8px;
+  border-radius: 8px;
   border: none;
   background: white;
   color: black;
@@ -215,12 +230,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 1vw;
-    background-color: #d3d4d9;
-    padding: 2vh;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-    justify-content: center;
+  background-color: #d3d4d9;
+  padding: 2vh;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  justify-content: center;
 }
 
 .teclado button {
@@ -231,10 +246,11 @@ body {
   border: none;
   border-radius: 6px;
   font-weight: bold;
-    cursor: pointer;
+  cursor: pointer;
   color: black;
   margin: 2px;
 }
+
 .remover {
   background: #e54b4b;
 }
@@ -245,9 +261,9 @@ body {
     padding: 8vh 4vw;
   }
 
-        .btn-continuar {
-          font-size: 20px;
-        }
+  .btn-continuar {
+    font-size: 20px;
+  }
 }
 
 .modal-termos {
@@ -291,6 +307,7 @@ body {
   margin-top: 20px;
   cursor: pointer;
 }
+
 .react-tel-input .flag-dropdown .country-list {
   outline: none !important;
   z-index: 1 !important;
