@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: url('./assets/bg_cadastro.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: sans-serif;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 16px;
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-cpf-container {
+  background: url('./assets/bg_modal.png') no-repeat center center;
+  background-size: cover;
+  padding: 80px 30px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 655px;
+  height: 1075px;
+}
+
+.modal-cpf-container h3 {
+  font-size: 50px;
+  margin: 120px 0;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.modal-cpf-container input {
+  width: 70%;
+  padding: 14px;
+  font-size: 45px;
+  text-align: center;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 25px;
+  background: white;
+  color: black;
+}
+
+.teclado {
+  display: flex;
+  gap: 7px;
+  background-color: #d3d4d9;
+  padding: 20px;
+  width: 90%;
+  border-radius: 10px;
+  margin: 30px 0;
+  color: black;
+  justify-content: center;
+}
+
+.teclado button {
+  padding: 14px;
+  font-size: 20px;
+  background: #e1e1e1;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 60px;
+  color: black;
+  margin: 4px;
+}
+
+.remover {
+  background: #e54b4b;
+  color: black;
+}
+
+.btn-continuar {
+  background: #ff6200;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  margin-top: 50px;
+  font-size: 38px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
