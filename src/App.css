@@ -111,7 +111,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 400px;
+    max-width: 60%;
   aspect-ratio: 9 / 16;
   padding: 12vh 5vw;
   border-radius: 16px;
