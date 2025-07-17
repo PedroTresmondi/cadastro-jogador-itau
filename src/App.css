@@ -1,3 +1,4 @@
+/* === CONFIGURAÇÃO GERAL === */
 body {
   margin: 0;
   padding: 0;
@@ -6,12 +7,13 @@ body {
   font-family: sans-serif;
   color: white;
   height: 100vh;
-  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* overflow: hidden;  Removido para permitir rolagem se necessário */
 }
 
+/* === TOAST === */
 .toast {
   visibility: hidden;
   min-width: 250px;
@@ -35,14 +37,17 @@ body {
   opacity: 1;
 }
 
+/* === CONTAINER === */
 .container {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
+/* === MODAL === */
 .modal {
   width: 100vw;
   height: 100vh;
@@ -55,18 +60,52 @@ body {
   z-index: 999;
 }
 
+/* === MODAL DE AUTENTICAÇÃO === */
+.modal-auth {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-auth-container {
+  background: #1f1f1f;
+  padding: 4vh 5vw;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #000;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-auth-container input {
+  width: 100%;
+  padding: 1vh;
+  margin: 2vh 0;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* === FORMULÁRIO === */
 .modal-cpf-container {
   background-size: contain;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 75%;
+  width: 100%;
+    max-width: 400px;
   aspect-ratio: 9 / 16;
-  padding: 15vh 5vw;
+  padding: 12vh 5vw;
   border-radius: 16px;
-    box-sizing: border-box;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .modal-cpf-container h3 {
@@ -76,47 +115,32 @@ body {
   font-weight: lighter;
 }
 
-.modal-cpf-container input {
-  width: 90%;
+/* === INPUT GROUP === */
+.input-group {
+  width: 95%;
+  margin-bottom: 2vh;
+  display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+  font-size: clamp(14px, 2vw, 18px);
+  margin-bottom: 0.5vh;
+  color: white;
+  font-weight: lighter;
+}
+
+.input-group input {
   padding: 1vh;
   font-size: clamp(18px, 4vw, 24px);
-  text-align: center;
-  border-radius: 8px;
+    text-align: center;
+    border-radius: 8px;
   border: none;
-  height: 10px;
-  margin-bottom: 2vh;
   background: white;
   color: black;
 }
 
-.teclado {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1vw;
-  background-color: #d3d4d9;
-  padding: 2vh;
-  width: 90%;
-  border-radius: 10px;
-  justify-content: center;
-}
-
-.teclado button {
-  width: clamp(45px, 8vw, 60px);
-  padding: 1vh;
-  font-size: clamp(16px, 4vw, 22px);
-  background: #e1e1e1;
-  border: none;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  color: black;
-  margin: 2px;
-}
-
-.remover {
-  background: #e54b4b;
-}
-
+/* === BOTÃO === */
 .btn-continuar {
   background: #ff6200;
   color: white;
@@ -129,8 +153,8 @@ body {
   margin-top: 2vh;
 }
 
+/* === CHECKBOXES === */
 .checkbox-inline {
-  /* width: 90%; */
   display: flex;
   gap: 10px;
   margin-bottom: 2vh;
@@ -175,57 +199,42 @@ body {
   font-weight: bold;
 }
 
-.input-group {
-  width: 95%;
-  margin-bottom: 2vh;
+/* === TECLADO VIRTUAL === */
+.teclado {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+    gap: 1vw;
+    background-color: #d3d4d9;
+    padding: 2vh;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    justify-content: center;
 }
 
-.input-group label {
-  font-size: clamp(25px, 2vw, 18px);
-  margin-bottom: 0.5vh;
-  color: white;
-  font-weight: lighter;
-}
-
-.input-group input {
+.teclado button {
+  width: clamp(45px, 8vw, 60px);
   padding: 1vh;
-  font-size: clamp(18px, 4vw, 24px);
-  text-align: center;
-  border-radius: 8px;
+  font-size: clamp(16px, 4vw, 22px);
+    background: #e1e1e1;
   border: none;
-  background: white;
+  border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
   color: black;
+  margin: 2px;
 }
-.modal-auth {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+.remover {
+  background: #e54b4b;
 }
 
-.modal-auth-container {
-  background: #1f1f1f;
-  padding: 4vh 5vw;
-  border-radius: 16px;
-  box-shadow: 0 0 20px #000;
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-}
+/* === MEDIA QUERY OPCIONAL (ex: iPhone SE ou telas estreitas) === */
+@media (max-width: 400px) {
+  .modal-cpf-container {
+    padding: 8vh 4vw;
+  }
 
-.modal-auth-container input {
-  width: 100%;
-  padding: 1vh;
-  margin: 2vh 0;
-  font-size: 18px;
-  border-radius: 8px;
-  border: none;
+        .btn-continuar {
+          font-size: 20px;
+        }
 }
