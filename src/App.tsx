@@ -218,7 +218,7 @@ function App() {
             <div className="checkboxes">
               <label className="checkbox-inline">
                 <input type="checkbox" name="estrangeiro" checked={form.estrangeiro} onChange={handleChange} />
-                Sou estrangeiro
+                I am foreigner
               </label>
 
               <label className="checkbox-inline">
