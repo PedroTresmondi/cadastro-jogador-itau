@@ -75,48 +75,49 @@ function App() {
     <div className="container">
       {mensagem && <div className="toast show">{mensagem}</div>}
 
-      {etapa === 'senha' && (
-        <div className="modal">
-          <div className="modal-cpf-container">
-            <h3>Digite a senha para acessar:</h3>
-            <input
-              type="password"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-              placeholder="Senha"
-            />
-            <button className="btn-continuar" onClick={validarSenha}>Entrar</button>
-          </div>
+    {etapa === 'senha' && (
+      <div className="modal">
+        <div className="modal-cpf-container">
+          <h3>Digite a senha para acessar:</h3>
+          <input
+            type="password"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            placeholder="Senha"
+          />
+          <button className="btn-continuar" onClick={validarSenha}>Entrar</button>
         </div>
-      )}
+      </div>
+    )}
 
-      {etapa === 'cpf' && (
-        <div className="modal">
-          <div className="modal-cpf-container">
-            <h3>Insira seu CPF:</h3>
-            <input value={formatarCPFParcial(cpf)} readOnly />
-            <div className="teclado">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((n, i) => (
-                <button key={i} onClick={() => inserirNumero(n)}>{n}</button>
-              ))}
-              <button className="remover" onClick={removerUltimo}>x</button>
-            </div>
-            <button className="btn-continuar" onClick={enviarCPF}>Continuar</button>
+    {etapa === 'cpf' && (
+      <div className="modal">
+        <div className="modal-cpf-container">
+          <h3>Insira seu CPF:</h3>
+          <input value={formatarCPFParcial(cpf)} readOnly />
+          <div className="teclado">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n, i) => (
+              <button key={i} onClick={() => inserirNumero(n)}>{n}</button>
+            ))}
+            <button onClick={() => inserirNumero(0)}>0</button>
+            <button className="remover" onClick={removerUltimo}>x</button>
           </div>
+          <button className="btn-continuar" onClick={enviarCPF}>Continuar</button>
         </div>
-      )}
+      </div>
+    )}
 
-      {etapa === 'final' && (
-        <div className="modal">
-          <div className="modal-cpf-container">
-            <h3>Você confirma o CPF abaixo?</h3>
-            <input value={formatarCPF(cpf)} readOnly />
-            <button className="btn-continuar" onClick={confirmarCadastro}>Sim, confirmar</button>
-          </div>
+    {etapa === 'final' && (
+      <div className="modal">
+        <div className="modal-cpf-container">
+          <h3>Você confirma o CPF abaixo?</h3>
+          <input value={formatarCPF(cpf)} readOnly />
+          <button className="btn-continuar" onClick={confirmarCadastro}>Sim, confirmar</button>
         </div>
-      )}
-    </div>
-  );
+      </div>
+    )}
+  </div>
+);
 }
 
 export default App;

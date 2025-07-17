@@ -8,7 +8,6 @@ body {
   height: 100vh;
   overflow: hidden;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -30,99 +29,104 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
-
 .toast.show {
   visibility: visible;
   opacity: 1;
 }
 
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
+.container {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.modal {
+  width: 100vw;
+    height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 999;
 }
 
 .modal-cpf-container {
   background: url('./assets/bg_modal.png') no-repeat center center;
   background-size: cover;
-  padding: 80px 30px;
-  border-radius: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 655px;
-  height: 1075px;
+  justify-content: space-between;
+  
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 9 / 16;
+    padding: 4vh 5vw;
+    border-radius: 16px;
+    box-sizing: border-box;
+  
+    overflow: hidden;
 }
 
 .modal-cpf-container h3 {
-  font-size: 50px;
-  margin: 120px 0;
+  font-size: clamp(18px, 3.5vw, 26px);
+    margin: 2vh 0;
   text-align: center;
   font-weight: lighter;
 }
 
 .modal-cpf-container input {
-  width: 70%;
-  padding: 14px;
-  font-size: 45px;
+  width: 90%;
+    padding: 1.2vh;
+    font-size: clamp(18px, 4vw, 24px);
   text-align: center;
   border-radius: 8px;
   border: none;
-  margin-bottom: 25px;
+  margin-bottom: 2vh;
   background: white;
   color: black;
 }
 
 .teclado {
   display: flex;
-  gap: 7px;
+  flex-wrap: wrap;
+    gap: 1vw;
   background-color: #d3d4d9;
-  padding: 20px;
+  padding: 2vh;
   width: 90%;
   border-radius: 10px;
-  margin: 30px 0;
-  color: black;
   justify-content: center;
 }
 
 .teclado button {
-  padding: 14px;
-  font-size: 20px;
+  width: clamp(45px, 8vw, 60px);
+    padding: 1vh;
+    font-size: clamp(16px, 4vw, 22px);
   background: #e1e1e1;
   border: none;
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  width: 60px;
   color: black;
-  margin: 4px;
+  margin: 2px;
 }
 
 .remover {
   background: #e54b4b;
-  color: black;
 }
 
 .btn-continuar {
   background: #ff6200;
   color: white;
   border: none;
-  padding: 14px 30px;
+  padding: 1.5vh 5vw;
   border-radius: 8px;
-  margin-top: 50px;
-  font-size: 38px;
-  font-weight: 500;
+  font-size: clamp(18px, 4vw, 26px);
+    font-weight: bold;
   cursor: pointer;
-}
-
-.container {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+  margin-top: 2vh;
 }
