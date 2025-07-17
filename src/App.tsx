@@ -142,7 +142,20 @@ function App() {
       .insert([{ nome, email, telefone, cpf: cpfFinal }]);
 
     if (insertError) return mostrarToast('Erro ao cadastrar.');
+    // Sucesso!
     mostrarToast('Cadastro realizado com sucesso!');
+    localStorage.setItem('nomeJogador', estrangeiro ? nome : cpfFormatado);
+
+    // Limpa todos os campos após sucesso
+    setForm({
+      nome: '',
+      email: '',
+      telefone: '',
+      cpf: '',
+      politica: false,
+      estrangeiro: false
+    });
+    setCampoAtivo(null);
     localStorage.setItem('nomeJogador', estrangeiro ? nome : cpfFormatado);
   };
 
@@ -218,7 +231,7 @@ function App() {
             <div className="checkboxes">
               <label className="checkbox-inline">
                 <input type="checkbox" name="estrangeiro" checked={form.estrangeiro} onChange={handleChange} />
-                I am foreigner
+                Estrangeiro?
               </label>
 
               <label className="checkbox-inline">
