@@ -29,6 +29,7 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
+
 .toast.show {
   visibility: visible;
   opacity: 1;
@@ -37,14 +38,16 @@ body {
 .container {
   width: 100vw;
   height: 100vh;
+  overflow-y: auto;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .modal {
   width: 100vw;
-    height: 100vh;
+  height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -55,37 +58,34 @@ body {
 }
 
 .modal-cpf-container {
-  background: url('./assets/bg_modal.png') no-repeat center center;
-  background-size: cover;
+  background-size: contain;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  
-    width: 100%;
-    max-width: 400px;
+  width: 75%;
     aspect-ratio: 9 / 16;
-    padding: 4vh 5vw;
+  padding: 15vh 5vw;
     border-radius: 16px;
     box-sizing: border-box;
-  
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .modal-cpf-container h3 {
   font-size: clamp(18px, 3.5vw, 26px);
-    margin: 2vh 0;
+  margin: 2vh 0;
   text-align: center;
   font-weight: lighter;
 }
 
 .modal-cpf-container input {
   width: 90%;
-    padding: 1.2vh;
+  padding: 1vh;
     font-size: clamp(18px, 4vw, 24px);
   text-align: center;
   border-radius: 8px;
   border: none;
+  height: 10px;
   margin-bottom: 2vh;
   background: white;
   color: black;
@@ -94,7 +94,7 @@ body {
 .teclado {
   display: flex;
   flex-wrap: wrap;
-    gap: 1vw;
+  gap: 1vw;
   background-color: #d3d4d9;
   padding: 2vh;
   width: 90%;
@@ -104,7 +104,7 @@ body {
 
 .teclado button {
   width: clamp(45px, 8vw, 60px);
-    padding: 1vh;
+  padding: 1vh;
     font-size: clamp(16px, 4vw, 22px);
   background: #e1e1e1;
   border: none;
@@ -126,7 +126,77 @@ body {
   padding: 1.5vh 5vw;
   border-radius: 8px;
   font-size: clamp(18px, 4vw, 26px);
-    font-weight: bold;
+  font-weight: bold;
   cursor: pointer;
   margin-top: 2vh;
+}
+
+.checkbox-inline {
+  /* width: 90%; */
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2vh;
+  font-size: clamp(12px, 2.5vw, 16px);
+  line-height: 2.4;
+  color: white;
+  font-weight: normal;
+  align-items: flex-start;
+}
+
+.checkbox-inline input[type="checkbox"] {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: #fff;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checkbox-inline input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 8px;
+  height: 14px;
+  border-right: 3px solid #ff6200;
+  border-bottom: 3px solid #ff6200;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease;
+}
+
+.checkbox-inline input[type="checkbox"]:checked::before {
+  transform: rotate(45deg) scale(1);
+}
+
+.checkbox-inline a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.input-group {
+  width: 95%;
+  margin-bottom: 2vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-size: clamp(25px, 2vw, 18px);
+  margin-bottom: 0.5vh;
+  color: white;
+  font-weight: lighter;
+}
+
+.input-group input {
+  padding: 1vh;
+  font-size: clamp(18px, 4vw, 24px);
+  text-align: center;
+  border-radius: 8px;
+  border: none;
+  background: white;
+  color: black;
 }
